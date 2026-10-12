@@ -39,25 +39,4 @@ print(dataset["train"][0])
 ```
 
 
----
-
-### 2. 表示と動作を確認する
-
-1. **Dataset Viewer の確認**
-   `README.md` を保存後、データセットのトップページ（`Dataset card` タブ）に戻ると、数十秒でデータセットプレビューが自動生成されて、ブラウザ上でテーブル表示・検索ができるようになるわよ。
-
-2. **Pythonからの読み込みテスト**
-   手元の Python や Google Colab などで以下のコードを実行して、正常にロードできるか試してみてね。
-
-   ```python
-   from datasets import load_dataset
-
-   # リポジトリから直接読み込み
-   ds = load_dataset("z0uy1n/inmu")
-
-   # 先頭データを確認
-   print(ds["train"][0])
-
-```
-
 https://docs.google.com/spreadsheets/d/1uL-9M_Wf8kogJVS0Cb0PZosuuluI0REcoWupQpjbBVA/edit?usp=sharing
