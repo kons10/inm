@@ -1,15 +1,24 @@
 name: Sync to Hugging Face Hub
+
 on:
   push:
-    branches: [main]
+    branches: [main] # デフォルトブランチが master の場合は master に変更
+  workflow_dispatch:
 
 jobs:
-  sync:
+  sync-to-hub:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: huggingface/hub-sync@v0.3.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true # LFS追跡ファイルがある場合は取得する
+
+      - name: Sync to Hugging Face Dataset
+        uses: huggingface/hub-sync@v0.3.0
         with:
           github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: username/repo-name
+          huggingface_repo_id: kons10/inm-db
           hf_token: ${{ secrets.HF_TOKEN }}
+          repo_type: dataset
